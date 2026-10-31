@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Soniyaa M | Full Stack & Cloud Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+            background: #f4f9fe;
+            color: #1f2e3a;
+            scroll-behavior: smooth;
+        }
+
+        /* header */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #1a2f3f);
+            color: white;
+            padding: 50px 20px 70px;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            overflow: visible;
+        }
+
+        header .profile-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ffdd99;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: #f0f0f0;
+            transition: transform 0.3s ease, box-shadow 0.3s;
+        }
+
+        header .profile-photo:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+        }
+
+        header h1 {
+            margin: 0 0 12px;
+            font-weight: 700;
+            font-size: 3rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-weight: 400;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+        }
+
+        /* navigation */
+        nav {
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        nav a {
+            color: #f0e6d2;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-radius: 30px;
+            padding: 8px 18px;
+            transition: all 0.25s ease;
+            display: inline-block;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: #ffcd94;
+            color: #1f3e48;
+            transform: translateY(-2px);
+        }
+
+        /* main layout with improved spacing */
+        .content-wrapper {
+            display: flex;
+            gap: 40px;
+            max-width: 1300px;
+            margin: 50px auto 80px;
+            padding: 0 30px;
+        }
+
+        /* sidebar - dashboard style with spacing */
+        .sidebar {
+            background: #1f3e48;
+            color: #fef5e7;
+            padding: 32px 30px;
+            border-radius: 28px;
+            max-width: 300px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            flex-shrink: 0;
+            height: fit-content;
+            position: sticky;
+            top: 28px;
+            transition: all 0.2s;
+        }
+
+        .sidebar h3 {
+            border-left: 4px solid #ffb347;
+            padding-left: 16px;
+            margin: 32px 0 18px 0;
+            font-weight: 600;
+            color: #ffebcd;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
+
+        .sidebar h3:first-of-type {
+            margin-top: 0;
+        }
+
+        .sidebar ul {
+            padding-left: 8px;
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            padding: 12px 0;
+            font-size: 0.92rem;
+            border-bottom: 1px solid #326070;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            line-height: 1.4;
+        }
+
+        .sidebar ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* main content area */
+        main.container {
+            flex-grow: 1;
+            max-width: 850px;
+        }
+
+        /* section cards - more spacing */
+        .section {
+            background: white;
+            padding: 32px 36px;
+            margin-bottom: 36px;
+            border-radius: 28px;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+            transition: transform 0.25s, box-shadow 0.25s;
+            border: 1px solid #eaf0f5;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 32px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            color: #1e5a6e;
+            margin-bottom: 24px;
+            border-bottom: 3px solid #ffb85e;
+            padding-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+            font-size: 1.8rem;
+        }
+
+        /* projects grid */
+        .projects {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #fefaf5;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: 0.25s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid #f0e2d4;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+            border-color: #ffc489;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #e2eef5;
+        }
+
+        .project-content {
+            padding: 20px 22px;
+            flex-grow: 1;
+        }
+
+        .project-content h3 {
+            margin: 0 0 12px;
+            color: #c2712e;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .project-content p {
+            margin: 0;
+            font-size: 0.92rem;
+            color: #445f6e;
+            line-height: 1.5;
+        }
+
+        /* lists with spacing */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding: 10px 0;
+            font-weight: 400;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #eef2f5;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* contact section - enhanced spacing */
+        .contact-section {
+            background: white;
+            padding: 32px 36px;
+            border-radius: 28px;
+            margin-bottom: 36px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 16px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eef2f5;
+        }
+
+        .contact-item i {
+            width: 32px;
+            font-size: 1.3rem;
+            color: #c2712e;
+        }
+
+        .contact-item strong {
+            font-weight: 600;
+            color: #1e5a6e;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+
+        .btn-contact {
+            background: #1f3e48;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-contact:hover {
+            background: #c2712e;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: #1f3e48;
+            color: #f0e6da;
+            text-align: center;
+            padding: 28px 20px;
+            font-weight: 400;
+            letter-spacing: 0.8px;
+            font-size: 0.85rem;
+            margin-top: 20px;
+        }
+
+        @media(max-width: 950px) {
+            .content-wrapper {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .sidebar {
+                max-width: 100%;
+                position: relative;
+                top: 0;
+                margin-bottom: 20px;
+            }
+            .projects {
+                grid-template-columns: 1fr;
+            }
+            header .profile-photo {
+                position: static;
+                display: block;
+                margin: 0 auto 20px;
+                right: auto;
+            }
+            header {
+                padding-bottom: 50px;
+            }
+            nav a {
+                margin: 0 6px;
+                padding: 6px 14px;
+                font-size: 0.85rem;
+            }
+            .section, .contact-section {
+                padding: 24px 28px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <img src="22EE052_SONIYAA.jpg" alt="Soniyaa M" class="profile-photo" onerror="this.src='https://via.placeholder.com/140?text=SM';" />
+    <h1>Soniyaa M</h1>
+    <p>Java Full Stack Developer | AWS Cloud Enthusiast</p>
+    <nav id="mainNav">
+        <a href="#career-objective" class="nav-link">Objective</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#skills" class="nav-link">Tech Skills</a>
+        <a href="#achievements" class="nav-link">Achievements</a>
+        <a href="#leadership" class="nav-link">Leadership</a>
+        <a href="#certificates" class="nav-link">Certificates</a>
+        <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+</header>
+
+<div class="content-wrapper">
+    <aside class="sidebar">
+        <h3><i class="fas fa-address-card"></i> Contact</h3>
+        <ul>
+            <li><i class="fas fa-phone-alt"></i> +91 87786 67854</li>
+            <li><i class="fas fa-envelope"></i> soniyaa101010@gmail.com</li>
+            <li><i class="fas fa-map-marker-alt"></i> 2/3-208 Thengalpallam, Chinnathanda, Mettur, Salem</li>
+        </ul>
+
+        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+        <ul>
+            <li><strong>Dr. N.G.P Institute of Technology</strong><br>B.E EEE (2022-2026) | CGPA: 8.2</li>
+            <li>HSC (12th) - 83.3% | SSLC (10th) - 76.4%<br>M.A.M. Matric Hr Sec School</li>
+        </ul>
+
+        <h3><i class="fas fa-rocket"></i> Area of Interest</h3>
+        <ul>
+            <li>Java Full Stack Development</li>
+            <li>Java Cloud Architecture</li>
+            <li>Cloud Deployment (AWS)</li>
+            <li>Spring Boot & Microservices</li>
+        </ul>
+
+        <h3><i class="fas fa-language"></i> Languages</h3>
+        <ul>
+            <li>English (Professional)</li>
+            <li>Tamil (Native)</li>
+        </ul>
+    </aside>
+
+    <main class="container">
+        <!-- Career Objective -->
+        <section id="career-objective" class="section">
+            <h2><i class="fas fa-bullseye"></i> Career Objective</h2>
+            <p style="line-height: 1.6; font-size: 1rem;">
+                Passionate Java Full Stack Developer with strong foundation in Core Java, Spring Boot, and AWS cloud. 
+                Eager to leverage full-stack expertise and problem-solving mindset to build scalable, cloud-native applications. 
+                Aiming to contribute to innovative tech ecosystems where code delivers real-world impact — driving efficiency through modern web architecture and DevOps practices.
+            </p>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects">
+            <h2><i class="fas fa-laptop-code"></i> Projects</h2>
+
+            <div class="project-card" tabindex="0">
+                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=600&q=80" alt="Portfolio Website" class="project-image" />
+                <div class="project-content">
+                    <h3>Personal Portfolio Website</h3>
+                    <p>Built a responsive portfolio using HTML, CSS, and JavaScript that showcases projects, skills, and contact information with a modern UI/UX design.</p>
+                </div>
+            </div>
+
+            <div class="project-card" tabindex="0">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="HR Core Solutions" class="project-image" />
+                <div class="project-content">
+                    <h3>HR Core Solutions Portal</h3>
+                    <p>Designed & developed a full‑stack web app to streamline HR operations. Backend: Java, Servlets, Spring Boot, JDBC. Frontend: HTML, CSS, JS. Simplifies workforce management.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section id="skills" class="section">
+            <h2><i class="fas fa-microchip"></i> Technical Skills</h2>
+            <ul>
+                <li><strong>Backend:</strong> Core Java, Servlets, Spring Boot, JDBC</li>
+                <li><strong>Frontend:</strong> HTML, CSS, JavaScript</li>
+                <li><strong>Database:</strong> MySQL</li>
+                <li><strong>Tools:</strong> Eclipse/IntelliJ, Visual Studio Code, NetBeans</li>
+                <li><strong>Cloud:</strong> AWS (EC2, S3) — Deployed Java full‑stack app on AWS</li>
+            </ul>
+        </section>
+
+        <!-- Achievements -->
+        <section id="achievements" class="section">
+            <h2><i class="fas fa-trophy"></i> Achievements</h2>
+            <ul>
+                <li>✅ Successfully deployed a Java full-stack application on AWS (EC2 + S3).</li>
+                <li>🏅 Won "Best YUVA Club" representing Dr. N.G.P. Institute of Technology at Coimbatore chapter.</li>
+                <li>📜 Completed courses in Full Stack Java (Servlet, Spring Boot) and AWS Cloud Practitioner essentials.</li>
+                <li>🎤 Presented full-stack project at IIT Madras & IIE – recognized for Java Cloud Innovation.</li>
+            </ul>
+        </section>
+
+        <!-- Leadership Experience -->
+        <section id="leadership" class="section">
+            <h2><i class="fas fa-users"></i> Leadership Experience</h2>
+            <ul>
+                <li><strong>Co-Chairperson (Innovation) – YI-YUVA Coimbatore Chapter</strong> (2024-2025) at Dr. N.G.P. Institute of Technology.</li>
+                <li>Conducted Events: Reverse Engineering (inter-dept competition, Head), E-sport (Kanam, Head), Onam event (Coordinator).</li>
+                <li>Organized leadership bootcamps & technical fests, fostering innovation among 200+ students.</li>
+            </ul>
+        </section>
+
+        <!-- Certificates -->
+        <section id="certificates" class="section">
+            <h2><i class="fas fa-certificate"></i> Certifications & Workshops</h2>
+            <ul>
+                <li>✨ ADOBE: Crafting modern web apps with Spring Boot – IIT Madras & IIE</li>
+                <li>🚀 GenNXT Lab Leadership Bootcamp – Young Java Cloud Architecture (Young Indians, KCT)</li>
+                <li>☁️ Java Cloud Architecture Workshop – Deployed Spring Boot microservices on AWS</li>
+                <li>📘 Full Stack Java Developer Certification (Servlet, Spring Boot, Hibernate)</li>
+                <li>🎤 Paper Presentation on Cloud-Native Java Solutions – KIT, Coimbatore (March 2025)</li>
+            </ul>
+        </section>
+
+        <!-- Contact Section with enhanced spacing -->
+        <section id="contact" class="contact-section">
+            <h2 style="color: #1e5a6e; margin-bottom: 24px; border-bottom: 3px solid #ffb85e; padding-bottom: 12px; font-size: 1.8rem;">
+                <i class="fas fa-address-card"></i> Get in Touch
+            </h2>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span><strong>Email:</strong> soniyaa101010@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span><strong>Phone:</strong> +91 87786 67854</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><strong>Address:</strong> 2/3-208 Thengalpallam, Chinnathanda, Mettur, Salem</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-language"></i>
+                    <span><strong>Languages:</strong> English (Fluent), Tamil (Native)</span>
+                </div>
+            </div>
+            <div class="contact-buttons">
+                <button class="btn-contact" id="emailBtn"><i class="fas fa-paper-plane"></i> Send Email</button>
+                <button class="btn-contact" id="copyBtn"><i class="fas fa-copy"></i> Copy Email</button>
+            </div>
+        </section>
+    </main>
+</div>
+
+<footer>
+    © 2025 Soniyaa M — Java Full Stack & Cloud Portfolio | Built with modern web standards
+</footer>
+
+<script>
+    // Improved navigation: active link highlighting + smooth scroll
+    const sections = document.querySelectorAll('.section, .contact-section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function setActiveLink() {
+        let current = '';
+        const scrollPos = window.scrollY + 130;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href').substring(1);
+            if (href === current) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', setActiveLink);
+    window.addEventListener('load', setActiveLink);
+
+    // Smooth scroll for nav links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                history.pushState(null, null, `#${targetId}`);
+            }
+        });
+    });
+
+    // Contact buttons functionality
+    const emailBtn = document.getElementById('emailBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const emailAddress = 'soniyaa101010@gmail.com';
+
+    emailBtn.addEventListener('click', () => {
+        window.location.href = `mailto:${emailAddress}?subject=Portfolio%20Inquiry`;
+    });
+
+    copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(emailAddress).then(() => {
+            alert('Email address copied to clipboard!');
+        }).catch(() => {
+            prompt('Copy manually:', emailAddress);
+        });
+    });
+
+    // Initial hash handling
+    if (window.location.hash) {
+        const initialHash = window.location.hash.substring(1);
+        const initialTarget = document.getElementById(initialHash);
+        if (initialTarget) {
+            setTimeout(() => {
+                initialTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+    }
+</script>
+</body>
+</html>
