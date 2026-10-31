@@ -43,4 +43,4 @@ Frontend Development Certification – Besant Technologies
 ## Contact
 
 - Email: soniyaa101010@gmail.com
-- LinkedIn: [Connect with me](https://www.linkedin.com/in/soniyaa-m-009178287/)
+- LinkedIn: (https://www.linkedin.com/in/soniyaa-m-009178287/)
